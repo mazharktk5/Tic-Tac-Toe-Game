@@ -1,0 +1,91 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #121212;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  color: #ffffff;
+}
+
+h1 {
+  margin: 20px 0;
+  font-size: 2.5rem;
+  color: #ce9046;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+}
+
+.game {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  position: relative;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: #aeae7e;
+  border: 2px solid #e7b683;
+  border-radius: 12px;
+  font-size: 3rem;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.box:hover {
+  transform: scale(1.05);
+}
+
+.buttons {
+  margin-top: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 1.25rem;
+  background-color: #ce9046;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin: 0 10px;
+}
+
+button:disabled {
+  cursor: not-allowed;
+
+  background-color: rgba(255, 255, 255, 0.6);
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.win-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 87, 34, 0.9);
+  padding: 20px;
+  border: 2px solid #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-size: 2rem;
+  color: #ffffff;
+  z-index: 1000;
+}
+
+.hide {
+  display: none;
+}
