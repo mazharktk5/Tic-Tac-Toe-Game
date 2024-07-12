@@ -74,11 +74,23 @@ const checkWinner = () => {
 
 const checkDraw = () => {
     if (moves === 9) { 
+        for (let pattern of winPattern) {
+            let pos1Value = boxes[pattern[0]].innerText;
+            let pos2Value = boxes[pattern[1]].innerText;
+            let pos3Value = boxes[pattern[2]].innerText;
+
+            // Check if there's any winning pattern still available
+            if (pos1Value != pos2Value  || pos2Value != pos3Value) {
+                return; // If any box in a winning pattern is empty, it's not a draw yet
+            }
+        }
+        // If all boxes are filled and there's no winning pattern left, it's a draw
         winMessage.innerText = "It's a draw!";
         messageContainer.classList.remove("hide");
         disabledBoxes();
     }
 };
+
 
 newGameBtn.addEventListener("click", resetGame);
 resetBtn.addEventListener("click", resetGame);
