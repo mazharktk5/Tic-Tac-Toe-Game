@@ -23,7 +23,20 @@ const resetGame = () => {
     moves = 0;
     enabledBoxes();
     messageContainer.classList.add("hide");
-    boxes.forEach(box => box.innerText = "");
+    boxes.forEach(box => {
+        box.innerText = "";
+        box.removeAttribute("data-hover");
+    });
+}
+
+const updateHover = () => {
+    boxes.forEach(box => {
+        if (box.innerText === "") {
+            box.setAttribute("data-hover", turnO ? "O" : "X");
+        } else {
+            box.removeAttribute("data-hover");
+        }
+    });
 }
 
 boxes.forEach(box => {
@@ -41,8 +54,10 @@ boxes.forEach(box => {
             if (moves === 9) {
                 checkDraw();
             }
+            updateHover();
         }
     });
+    box.addEventListener("mouseover", updateHover);
 });
 
 const disabledBoxes = () => {
@@ -87,3 +102,6 @@ const checkDraw = () => {
 
 newGameBtn.addEventListener("click", resetGame);
 resetBtn.addEventListener("click", resetGame);
+
+// Initialize hover text on page load
+updateHover();
